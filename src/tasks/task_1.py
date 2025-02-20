@@ -66,14 +66,12 @@ class Car(Vehicle):
     def start_engine(self):
         message = f"{self.make} {self.model} ({self.spec}): Двигун запущено"
         logger.info(message)
-        print(message)
 
 
 class Motorcycle(Vehicle):
     def start_engine(self):
         message = f"{self.make} {self.model} ({self.spec}): Мотор заведено"
         logger.info(message)
-        print(message)
 
 
 class VehicleFactory(ABC):

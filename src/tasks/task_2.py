@@ -70,6 +70,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import List
+from src.utils.logger_config import logger
 
 
 @dataclass
@@ -119,7 +120,7 @@ class BookDisplayInterface(ABC):
 class ConsoleBookDisplay(BookDisplayInterface):
     def display_books(self, books: List[Book]) -> None:
         for book in books:
-            print(str(book))
+            logger.info(str(book))
 
 
 class LibraryManager:
@@ -145,7 +146,8 @@ def main():
     manager = LibraryManager(library, display)
 
     while True:
-        command = input("Enter command (add, remove, show, exit): ").strip().lower()
+        command = input(
+            "Enter command (add, remove, show, exit): ").strip().lower()
 
         if command == "add":
             title = input("Enter book title: ").strip()
@@ -160,7 +162,7 @@ def main():
         elif command == "exit":
             break
         else:
-            print("Invalid command. Please try again.")
+            logger.info("Invalid command. Please try again.")
 
 
 if __name__ == "__main__":
